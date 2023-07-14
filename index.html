@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Virtual LS</title>
+	<link rel="stylesheet" href="./styles.css">
+	<link rel="shortcut icon" href="./Assets/Pers-Design/Ley-Fav.png" type="image/x-icon">
+</head>
+
+<body>
+	<!-- Error BOX -->
+	<div id="pop-container">
+		<div class="nav">
+			<p id="nav-message"></p>
+			<span id="closing-x">X</span>
+		</div>
+		<div class="main-message-container">
+			<h3 id="pop-message"></h3>
+			<div class="error-buttons-container">
+				<button id="erase-pop-buttons">Confirm</button>
+				<button id="confirm-pop-buttons">OK</button>
+				<button id="cancel-pop-buttons">Cancel</button>
+			</div>
+		</div>
+	</div>
+	<!-- Error BOX -->
+
+	<!-- Audio -->
+	<audio id="error-sound" src="./Assets/Sounds Effect/423169__plasterbrain__pc-game-ui-error.flac"></audio>
+	<!-- Audio -->
+
+	<div id="instructions-box">
+		<img src="./Assets/Pers-Design/Instructions How To.png" alt="">
+		<button id="instruction-pop-buttons">Got it!</button>
+	</div>
+
+	<section>
+
+		<nav>
+			<img class="main-title" src="./Assets/Pers-Design/Main-Title.svg" alt="Main-Title">
+			<img id="help-button" class="help-button" src="./Assets/Icons/Help-Button.svg" alt="Help-Button">
+
+			<!-- Text Buttons -->
+			<div class="button-container">
+				<button id="add-item">Add Item</button>
+				<button id="remove-item">Remove Last Type Item </button>
+				<button id="remove-all-items">Remove All Items </button>
+				<button id="git-link">GitHub</button>
+
+				<!-- Test Zone Button Console + Audio + <-->
+				<!-- <button id="console-test">Console Test</button> -->
+				<!-- Test Zone Button Console + Audio + <-->
+			</div>
+			<!-- Text Buttons -->
+		</nav>
+
+		<main>
+			<div id="icons-container">
+				<div id="item-icon" class="principal-icon-container item" value="item">
+					<img src="./Assets/Icons/Equal-Sign.svg" alt="Equal-Sign">
+				</div>
+				<div id="array-icon" class="principal-icon-container array" value="array">
+					<img src="./Assets/Icons/Brackets.svg" alt="Brackets">
+				</div>
+				<div id="object-icon" class="principal-icon-container object" value="object">
+					<img src="./Assets/Icons/Curly-Brackets.svg" alt="Curly-Brackets">
+				</div>
+			</div>
+
+			<input id="input" type="text" placeholder="INSERT DATA">
+
+			<!-- Hidden <-->
+			<select id="select" style="display: none;" onchange="selectFunction()">
+				<option value=""></option>
+				<option value="item">Item</option>
+				<option value="array">Array</option>
+				<option value="object">Object</option>
+			</select>
+			<!-- Hidden <-->
+		</main>
+
+		<div class="ui-container">
+			<h3> </h3>
+			<div id="local-ui">
+				<div id="myProgress">
+					<p id="loading">LOADING</p>
+					<div id="myBar">
+					</div>
+				</div>
+				<div id="ul-lists">
+					<ul id="item-list"></ul>
+					<ul id="array-list"></ul>
+					<ul id="object-list"></ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<p>"All rights reserved. Copyright<span>©</span>[2023] - [Luca G.]."</p>
+	</footer>
+
+	<script src="./main.js"></script>
+</body>
+
+</html>
