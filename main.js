@@ -10,6 +10,7 @@
 const input = document.getElementById('input');
 const uiContainer = document.getElementById('local-ui');
 let selectedOption = document.getElementById('select').value;
+const gitLinkButton = document.getElementById('git-link');
 
 // Data Type Buttons >
 const itemButton = document.getElementById('item-icon');
@@ -141,7 +142,7 @@ function emptyStorageMessage() {
     // Empty Message >
     emptyContentMessage.innerText = 'Your local storage is empty.';
     //
-    uiContainer.style.height = '100px';
+    // uiContainer.style.height = '100px';
 
     // Applied Style Properties through DOM and Object.assign >
     Object.assign(emptyContentMessage.style, {
@@ -150,6 +151,7 @@ function emptyStorageMessage() {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%,-50%)',
+      paddingBottom: '80px',
     });
     //
     ulContainer.append(emptyContentMessage);
@@ -157,7 +159,7 @@ function emptyStorageMessage() {
     // Not empty >
   } else {
     emptyContentMessage.remove();
-    uiContainer.style.height = '';
+    // uiContainer.style.height = '';
   }
 }
 
@@ -760,6 +762,12 @@ function clearLocalStorage() {
   counterItem = 0;
   closeWindowError();
 }
+
+// NB : GitHub Link >
+
+gitLinkButton.addEventListener('click', function () {
+  window.open('https://github.com/Leyinko/Your-local-localStorage', '_blank');
+});
 
 // ******************************** ⬇ TESTING ZONE ⬇ ************************************* //
 
