@@ -136,11 +136,16 @@ function playSound() {
 
 // > Empty Storage >
 // ! Object.assign().. Merveilleux !
+// * the window.innerWidth can control the display as a @media query..!
 
 function emptyStorageMessage() {
   if (localStorage.length <= 0) {
     // Empty Message >
     emptyContentMessage.innerText = 'Your local storage is empty.';
+    // Media Query Text Modified on reload >
+    if (window.innerWidth <= 600) {
+      emptyContentMessage.innerText = 'Empty local storage.';
+    }
     //
     // uiContainer.style.height = '100px';
 

@@ -412,9 +412,12 @@ p > span {
 
 #confirm-pop-buttons:hover,
 #cancel-pop-buttons:hover,
-#erase-pop-buttons:hover,
-#instruction-pop-buttons:hover {
+#erase-pop-buttons:hover {
   transform: none;
+  background-color: #b0b0b07e;
+}
+
+#instruction-pop-buttons:hover {
   background-color: #b0b0b07e;
 }
 
@@ -445,72 +448,56 @@ p > span {
 /* Instructions box */
 
 #instructions-box {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
+  height: 80vh;
   transform: translate(-50%, -50%);
-  width: 60vw;
-  height: 70vh;
-  background-color: white;
-  /* z-index: 99999; */
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.587);
-  border-radius: 20px;
   opacity: 0;
   transition: opacity 0.6s linear;
   overflow-y: scroll;
+  background-color: white;
 }
 
 #instructions-box > img {
-  /* position: absolute; */
-  /* top: 0px; */
-  width: 100%;
+  /* margin: 0px; */
+  /* width: 100%; */
   /* height: 100%; */
-  object-fit: cover;
-  border-radius: 20px;
+  object-fit: fill;
+  z-index: 9999;
 }
 
 #instruction-pop-buttons {
-  position: absolute;
-  /* bottom: 5px; */
-  left: 43%;
+  margin-bottom: 30px;
+  position: sticky;
+  bottom: 0px;
 }
 
-/* Media Querys */
+/* Media Query */
 
 @media screen and (min-width: 300px) and (max-width: 1180px) {
   .main-title {
     width: 280px;
   }
 
-  /* footer {
-    position: absolute;
-    top: 0px;
-  } */
-
   section {
     margin: 0px;
     flex-wrap: wrap;
-    /* border: 1px solid red; */
     gap: 0px;
-    /* width: 90%; */
-    /* height: 50%; */
   }
 
   body {
     margin: 0;
-    /* padding: 0px; */
-    /* display: block; */
-    /* width: max-content; */
     height: fit-content;
-    /* background-attachment: scroll; */
   }
 
   .ui-container {
     position: absolute;
-    /* top: 580px; */
-
-    /* margin: 0px; */
-    /* bottom: 0px; */
     padding: 0px 40px;
     max-width: 750px;
     min-width: 300px;
@@ -527,7 +514,6 @@ p > span {
 
   #pop-container {
     width: fit-content;
-    height: max-content;
     min-width: 240px;
     max-width: 550px;
   }
@@ -559,15 +545,6 @@ p > span {
     margin-top: 20px;
   }
 
-  section {
-    margin: 0px;
-    flex-wrap: wrap;
-    /* border: 1px solid red; */
-    gap: 0px;
-    /* width: 90%; */
-    /* height: 50%; */
-  }
-
   #local-ui {
     padding: 30px 10px;
   }
@@ -576,10 +553,28 @@ p > span {
     font-size: 1.8rem;
   }
 
+  li > h4 {
+    font-size: 1rem;
+  }
+
   .ui-container {
     top: 580px;
     padding: 0px 40px;
     max-width: 750px;
     min-width: 300px;
+  }
+
+  footer > p {
+    font-size: 1.5rem;
+  }
+
+  #instructions-box {
+    height: 80%;
+  }
+
+  #instructions-box > img {
+    /* transform: scale(0.7); */
+    /* object-fit: fill; */
+    z-index: 9999;
   }
 }
