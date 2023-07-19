@@ -6,6 +6,7 @@
   margin: 5px;
   font-family: 'Techkr';
   user-select: none;
+  text-decoration: none;
   list-style-type: none;
   outline: none;
   -webkit-user-drag: none;
@@ -39,27 +40,21 @@
 /* Principal */
 section {
   position: relative;
-  margin-bottom: 280px;
+  margin-bottom: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
-  /* padding-right: 80px; */
-  /* margin-top: 50px; */
+  gap: 30px;
 }
 
 body {
   width: 99vw;
   height: 90vh;
-  /* border: 1px solid red; */
-  /* padding: 30px; */
-  /* margin-bottom: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url(./Assets/Pers-Design/Custom-Background-3.png);
   background-repeat: no-repeat;
-  /* background-size: cover; */
   background-attachment: fixed;
 }
 
@@ -87,31 +82,12 @@ nav {
   width: 350px;
 }
 
-/*> Help Icon */
-
-.help-button {
-  position: absolute;
-  top: 50px;
-  left: -20px;
-  width: 20px;
-  height: 20px;
-  transition: transform 0.5s ease-in-out;
-  background-color: white;
-  border-radius: 50%;
-}
-
-.help-button:hover {
-  transform: scale(1.3);
-  cursor: pointer;
-}
-
 /*> Text Buttons Container */
 
 .button-container {
-  margin-top: 30px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
-  align-items: left;
 }
 
 /*> Text Buttons Config */
@@ -135,7 +111,7 @@ button:hover {
 
 main {
   height: fit-content;
-  margin-top: 240px;
+  margin-top: 255px;
   display: flex;
   flex-direction: column;
 }
@@ -149,6 +125,8 @@ main {
   gap: 15px;
 }
 
+/* Round containers */
+
 .principal-icon-container {
   width: 60px;
   height: 60px;
@@ -161,6 +139,8 @@ main {
   cursor: pointer;
   background-color: white;
 }
+
+/* Icons imgs */
 
 .principal-icon-container > img {
   width: 100%;
@@ -221,15 +201,36 @@ input:focus::placeholder {
   color: #00000000;
 }
 
+/* Animation Empty Remove or Null Input */
+
+.shakeItEmpty {
+  animation: shakeAnimation 0.2s linear;
+}
+
+@keyframes shakeAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 /*> UI Config  */
 
 .ui-container {
   position: absolute;
   width: 100%;
   top: 450px;
-  /* right: 83px; */
-  /* width: 80%;  */
-  /* border: 1px solid red; */
 }
 
 #local-ui {
@@ -237,6 +238,7 @@ input:focus::placeholder {
   width: 100%;
   min-height: 100px;
   padding: 50px 30px;
+  margin-bottom: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -246,15 +248,12 @@ input:focus::placeholder {
   background-color: white;
   box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.416);
   z-index: 100;
-  /* border: 1px solid red; */
-  margin-bottom: 80px;
 }
 
 /*> UI UL List Config */
 
-/* UL Selected Background */
-
 #ul-lists {
+  width: 100%;
   margin: 0px 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -290,7 +289,6 @@ footer {
 footer p {
   margin-bottom: 15px;
   font-size: 2rem;
-  /* background-color: white; */
 }
 
 p > span {
@@ -329,7 +327,7 @@ p > span {
   z-index: 1;
 }
 
-/*> Pop-up messages box */
+/*> Pop-up ERROR message box */
 
 #pop-container {
   position: absolute;
@@ -358,9 +356,13 @@ p > span {
   border: 1px solid black;
 }
 
+/* Text */
+
 .nav > p {
   color: white;
 }
+
+/* X */
 
 .nav > span {
   padding-left: 2px;
@@ -421,64 +423,55 @@ p > span {
   background-color: #b0b0b07e;
 }
 
-/* Animation Empty Remove or Null Input */
-
-.shakeItEmpty {
-  animation: shakeAnimation 0.2s linear;
-}
-
-@keyframes shakeAnimation {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-3px);
-  }
-  50% {
-    transform: translateX(3px);
-  }
-  75% {
-    transform: translateX(-3px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-/* Instructions box */
+/*> Instructions box */
 
 #instructions-box {
+  padding: 35px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
   height: 80vh;
   transform: translate(-50%, -50%);
-  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.587);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.587);
+  border-radius: 20px;
   opacity: 0;
   transition: opacity 0.6s linear;
-  overflow-y: scroll;
-  background-color: white;
+  overflow: scroll;
+  background-image: url('./Assets/Pers-Design/Custom-Background-4.png');
 }
 
-#instructions-box > img {
-  /* margin: 0px; */
-  /* width: 100%; */
-  /* height: 100%; */
-  object-fit: fill;
-  z-index: 9999;
+#instructions-box h3 {
+  margin: 20px;
+  font-size: 3.8rem;
+  font-weight: 400;
 }
 
-#instruction-pop-buttons {
-  margin-bottom: 30px;
-  position: sticky;
-  bottom: 0px;
+#instructions-box p {
+  font-weight: 100;
+  text-align: center;
+  font-size: 2.3rem;
 }
 
-/* Media Query */
+#instructions-box li {
+  font-size: 2.5rem;
+}
+
+/* Images */
+
+[alt='Syntax'] {
+  width: 100%;
+  max-width: 250px;
+}
+
+[alt='Keyboard'] {
+  width: 100%;
+  max-width: 500px;
+}
+
+/*> Media Query */
 
 @media screen and (min-width: 300px) and (max-width: 1180px) {
   .main-title {
@@ -538,11 +531,23 @@ p > span {
   #nav-message {
     opacity: 0;
   }
+
+  #instructions-box {
+    width: 80%;
+  }
+
+  [alt='Keyboard'] {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 300px) and (max-width: 600px) {
   main {
     margin-top: 20px;
+  }
+
+  .ui-container {
+    margin-top: 60px;
   }
 
   #local-ui {
@@ -569,12 +574,10 @@ p > span {
   }
 
   #instructions-box {
-    height: 80%;
+    width: 80%;
   }
 
-  #instructions-box > img {
-    /* transform: scale(0.7); */
-    /* object-fit: fill; */
-    z-index: 9999;
+  [alt='Keyboard'] {
+    display: none;
   }
 }

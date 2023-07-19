@@ -11,17 +11,17 @@
 
 <body>
 	<!-- Error BOX -->
-	<div id="pop-container" style="display: block;">
+	<div id="pop-container">
 		<div class="nav">
 			<p id="nav-message"></p>
-			<!-- <span id="closing-x">X</span> -->
+			<span id="closing-x">X</span>
 		</div>
 		<div class="main-message-container">
-			<h3 id="pop-message">Fostering the good through a maintenance..</h3>
+			<h3 id="pop-message"></h3>
 			<div class="error-buttons-container">
-				<!-- <button id="erase-pop-buttons">Confirm</button>
+				<button id="erase-pop-buttons">Confirm</button>
 				<button id="confirm-pop-buttons">OK</button>
-				<button id="cancel-pop-buttons">Cancel</button> -->
+				<button id="cancel-pop-buttons">Cancel</button>
 			</div>
 		</div>
 	</div>
@@ -33,26 +33,45 @@
 
 	<!-- Instructions BOX -->
 	<div id="instructions-box">
-		<img src="./Assets/Pers-Design/Instructions How To 2.png" alt="">
+		<h3>INTRODUCTION</h3>
+		<p>Local Storage is a web browser feature that allows web applications to store data on the user's device.</p>
+		<p>It's a key-value storage system that persists even after the browser is closed.</p>
+		<br>
+		<p>This app lets you store data into Local Storage and should automatically recognize Strings, Numbers and Booleans.
+		</p>
+		<p>You can choose between three different storing data types :</p>
+		<br>
+		<p style="color: red;">ITEMS, ARRAYS, AND OBJECTS.</p>
+		<br>
+		<p>The virtual box will display the current Local Storage content.</p>
+		<p>You can properly access it via the Developer Tools in your browser.</p>
+		<br>
+		<br>
+		<br>
+		<ol>
+			<h3>GET STARTED</h3>
+			<br>
+			<li>1. CHOOSE A DATA TYPE.</li>
+			<li>2. INPUT DATA WITH THE CORRECT SYNTAX (NO NEED FOR SYMBOLS).</li>
+			<li>3. CLICK "ADD ITEM" OR PRESS ENTER TO STORE IN LOCAL STORAGE.</li>
+		</ol>
+		<br>
+		<img src="./Assets/Pers-Design/Syntax.png" alt="Syntax">
+		<img src="./Assets/Pers-Design/Keyboard Shortcuts.png" alt="Keyboard">
 		<button id="instruction-pop-buttons">Got it!</button>
 	</div>
 	<!-- Instructions BOX -->
 
-	<section style="filter: blur(5px);">
-
+	<section>
 		<nav>
 			<img class="main-title" src="./Assets/Pers-Design/Main-Title.svg" alt="Main-Title">
-			<img id="help-button" class="help-button" src="./Assets/Icons/Help-Button.svg" alt="Help-Button">
-
 			<!-- Text Buttons -->
 			<div class="button-container">
 				<button id="add-item">Add Item</button>
 				<button id="remove-item">Remove Last Type Item </button>
 				<button id="remove-all-items">Remove All Items </button>
+				<button id="how-to-use">Instructions</button>
 				<button id="git-link">GitHub</button>
-				<!-- Test Zone Button Console + Audio + <-->
-				<!-- <button id="console-test">Console Test</button> -->
-				<!-- Test Zone Button Console + Audio + <-->
 			</div>
 			<!-- Text Buttons -->
 		</nav>
@@ -69,9 +88,7 @@
 					<img src="./Assets/Icons/Curly-Brackets.svg" alt="Curly-Brackets">
 				</div>
 			</div>
-
 			<input id="input" type="text" placeholder="INSERT DATA">
-
 			<!-- Hidden <-->
 			<select id="select" style="display: none;" onchange="selectFunction()">
 				<option value=""></option>
@@ -82,6 +99,7 @@
 			<!-- Hidden <-->
 		</main>
 
+		<!-- Virtual Box <-->
 		<div class="ui-container">
 			<div id="local-ui">
 				<div id="myProgress">
@@ -96,10 +114,11 @@
 				</div>
 			</div>
 		</div>
+		<!-- Virtual Box <-->
 	</section>
 
 	<footer>
-		<p>"All rights reserved. Copyright<span>©</span>[2023] - [Luca G.]."</p>
+		<p>"All rights reserved. Copyright<span>©</span>[2023] - [Luca G.]"</p>
 	</footer>
 
 	<script src="./main.js"></script>

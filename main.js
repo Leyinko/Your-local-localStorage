@@ -17,8 +17,8 @@ const itemButton = document.getElementById('item-icon');
 const arrayButton = document.getElementById('array-icon');
 const objectButton = document.getElementById('object-icon');
 
-// Help Button >
-const helpButton = document.getElementById('help-button');
+// Instructions >
+const howTo = document.getElementById('how-to-use');
 const instructionsButton = document.getElementById('instruction-pop-buttons');
 
 // UI console containers >
@@ -240,7 +240,7 @@ function highlightOption() {
 const instructionsBox = document.getElementById('instructions-box');
 
 instructionsButton.addEventListener('click', closeInstructionsBox);
-helpButton.addEventListener('click', openInstructionsBox);
+howTo.addEventListener('click', openInstructionsBox);
 
 // Open >
 function openInstructionsBox() {
@@ -268,6 +268,12 @@ function closeInstructionsBox() {
 // ! PREVENT DEFAULT right after the KEYBOARD makes the same KEY usable again for a different purpose....!!! (ENTER for both ADD and Confirm on ERROR)
 
 // Input
+// Blur removes placeholder for no blinking effects >
+document.getElementById('input').addEventListener('blur', function () {
+  this.removeAttribute('placeholder');
+});
+
+// Keyboard
 document.getElementById('input').addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
     addButton();
