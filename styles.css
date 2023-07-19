@@ -474,11 +474,6 @@ p > span {
 /*> Media Query */
 
 @media screen and (min-width: 300px) and (max-width: 1180px) {
-  * {
-    text-align: center;
-    vertical-align: middle;
-  }
-
   .main-title {
     width: 280px;
   }
@@ -547,11 +542,6 @@ p > span {
 }
 
 @media screen and (min-width: 300px) and (max-width: 600px) {
-  * {
-    text-align: center;
-    vertical-align: middle;
-  }
-
   main {
     margin-top: 20px;
   }
