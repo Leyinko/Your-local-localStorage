@@ -522,12 +522,6 @@ p > span {
     margin-bottom: 10px;
   }
 
-  .help-button {
-    position: absolute;
-    top: 0px;
-    left: 230px;
-  }
-
   #nav-message {
     opacity: 0;
   }
