@@ -6,7 +6,7 @@
 //
 // NB : DOM Elements >
 
-// Technical Elements >
+// Principal Elements >
 const input = document.getElementById('input');
 const uiContainer = document.getElementById('local-ui');
 let selectedOption = document.getElementById('select').value;
@@ -41,12 +41,12 @@ const confirmMessage = document.getElementById('confirm-pop-buttons');
 const cancelMessage = document.getElementById('cancel-pop-buttons');
 const eraseAllMessage = document.getElementById('erase-pop-buttons');
 
-// Sound Error Test >
+// Sound Error >
 const errorSound = document.getElementById('error-sound');
 
 // NB : Functions >
 
-// > Convert Data Type Function >
+// > Convert Data Type >
 
 function checkTypeOfValue(value) {
   let booleanReturn = false;
@@ -83,11 +83,13 @@ function rechargeUList() {
     let keyNoDigit = element.replace(/[0-9]|\s/g, '');
     let value = JSON.parse(localStorage.getItem(element));
     if (element.includes('Array')) {
-      let valueArray = JSON.stringify(value).replace(/,/g, ', ');
+      let valueArray = JSON.stringify(value)
+        .replace(/,/g, ', ')
+        .replace(/"/g, ' ');
       arrayUList.innerHTML += templateInject(keyNoDigit, valueArray);
     } else if (element.includes('Object')) {
       let valueObject = JSON.stringify(value)
-        .replace(/"/g, '')
+        .replace(/"/g, ' ')
         .replace(/:/g, ' : ')
         .replace(/,/g, ', ');
       objectUList.innerHTML += templateInject(keyNoDigit, valueObject);
@@ -136,7 +138,7 @@ function playSound() {
 
 // > Empty Storage >
 // ! Object.assign().. Merveilleux !
-// * the window.innerWidth can control the display as a @media query..!
+// * The window.innerWidth can control the display as a @media query..!
 
 function emptyStorageMessage() {
   if (localStorage.length <= 0) {
@@ -146,9 +148,6 @@ function emptyStorageMessage() {
     if (window.innerWidth <= 600) {
       emptyContentMessage.innerText = 'Empty local storage.';
     }
-    //
-    // uiContainer.style.height = '100px';
-
     // Applied Style Properties through DOM and Object.assign >
     Object.assign(emptyContentMessage.style, {
       fontSize: '2.5rem',
@@ -163,7 +162,6 @@ function emptyStorageMessage() {
     // Not empty >
   } else {
     emptyContentMessage.remove();
-    // uiContainer.style.height = '';
   }
 }
 
@@ -213,7 +211,8 @@ function loadingBar() {
   }
 }
 
-// > Highlight Data List Selection  >
+// > Highlight Data List Selection when .active  >
+// * Idk why i couldn't do it with a loop..
 
 function highlightOption() {
   if (selectedOption === '') {
@@ -401,6 +400,8 @@ function toggleFunction() {
 // NB : Add Item >
 // * outline : none on CSS makes the .focus() selection invisible!
 
+console.log(selectedOption);
+
 // Event Listener >
 document.getElementById('add-item').addEventListener('click', addButton);
 
@@ -423,8 +424,8 @@ function addButton() {
   if (selectedOption === '') {
     //
     popContainer.style.display = 'block';
-    titleErrorWindow.innerText = 'Select Data Type ERROR';
-    mainErrorMessage.innerText = 'Select data type.';
+    titleErrorWindow.innerText = 'Data Type ERROR';
+    mainErrorMessage.innerText = 'Select data type first!';
     document.querySelector('section').style.filter = 'blur(3px)';
     // Buttons >
     cancelMessage.style.display = 'none';
@@ -439,11 +440,60 @@ function addButton() {
         closeWindowError();
       }
     });
+    return;
+  }
+
+  // Accents ERROR >
+  if (/[À-ÅÈ-ËÌ-ÏÒ-ÖÙ-Üà-åè-ëì-ïò-öù-ü]/.test(item)) {
+    popContainer.style.display = 'block';
+    //
+    titleErrorWindow.innerText = 'Syntax ERROR';
+    mainErrorMessage.innerText = 'Accent or symbol not supported!';
+    document.querySelector('section').style.filter = 'blur(3px)';
+    // Buttons
+    cancelMessage.style.display = 'none';
+    confirmMessage.style.display = 'block';
+    eraseAllMessage.style.display = 'none';
+    // Audio
+    playSound();
+    // Confirm by pressing Enter
+    confirmMessage.focus();
+    confirmMessage.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        closeWindowError();
+        input.focus();
+      }
+    });
+    return;
+  }
+
+  // Quotation ERROR >
+  if (item.includes('"')) {
+    popContainer.style.display = 'block';
+    //
+    titleErrorWindow.innerText = 'Quotation ERROR';
+    mainErrorMessage.innerText = 'No quotation symbol needed for Strings!';
+    document.querySelector('section').style.filter = 'blur(3px)';
+    // Buttons
+    cancelMessage.style.display = 'none';
+    confirmMessage.style.display = 'block';
+    eraseAllMessage.style.display = 'none';
+    // Audio
+    playSound();
+    // Confirm by pressing Enter
+    confirmMessage.focus();
+    confirmMessage.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        closeWindowError();
+        input.focus();
+      }
+    });
+    return;
   }
 
   // Item Configuration >
   else if (selectedOption === 'item') {
-    if (item.includes('=')) {
+    if (item.includes('=') && !item.includes('"')) {
       // Original key split >
       let key = item.split('=')[0];
       let value = item.split('=')[1];
@@ -467,8 +517,10 @@ function addButton() {
       // Invalid Item Syntax ERROR WINDOW >
     } else {
       popContainer.style.display = 'block';
-      titleErrorWindow.innerText = 'Syntax ERROR';
-      mainErrorMessage.innerText = 'Invalid input format for "Item" option.';
+      //
+      titleErrorWindow.innerText = 'Assignment ERROR';
+      mainErrorMessage.innerText =
+        'Invalid assignment format for "Item" option.';
       document.querySelector('section').style.filter = 'blur(3px)';
       // Buttons
       cancelMessage.style.display = 'none';
@@ -489,7 +541,7 @@ function addButton() {
 
     // Array Configuration >
   } else if (selectedOption === 'array') {
-    if (item.includes(',') && !item.includes(':')) {
+    if (item.includes(',') && !item.includes(':') && !item.includes('"')) {
       //
       let key = `Array ${counterArray}`;
       let value = [];
@@ -513,7 +565,7 @@ function addButton() {
       // * Regular expressions are the best.. >
 
       let stringifiedValue = JSON.stringify(value);
-      let finalValue = stringifiedValue.replace(/,/g, ', ');
+      let finalValue = stringifiedValue.replace(/,/g, ', ').replace(/"/g, ' ');
       arrayUList.innerHTML += templateInject(keyNoDigit, finalValue);
 
       // Scroll Follow Pop Element >
@@ -522,8 +574,9 @@ function addButton() {
       // Invalid Array Syntax ERROR WINDOW >
     } else {
       popContainer.style.display = 'block';
-      titleErrorWindow.innerText = 'Syntax ERROR';
-      mainErrorMessage.innerText = 'Invalid input format for "Array" option.';
+      titleErrorWindow.innerText = 'Assignment ERROR';
+      mainErrorMessage.innerText =
+        'Invalid assignment format for "Array" option.';
       document.querySelector('section').style.filter = 'blur(3px)';
       // Buttons
       cancelMessage.style.display = 'none';
@@ -553,7 +606,11 @@ function addButton() {
     // Use of the itemArray because it is already splitted with the ',' so every item is a string who contains a ':' > split from there and take the first element as KEY and the second as VALUE >
     try {
       itemArray.forEach((indexPairValue) => {
-        if (indexPairValue.includes(':')) {
+        if (
+          indexPairValue.includes(':') &&
+          !item.includes('"') &&
+          !item.includes('=')
+        ) {
           let keyPair = indexPairValue.split(':')[0];
           let valuePair = indexPairValue.split(':')[1];
 
@@ -563,7 +620,7 @@ function addButton() {
           // Insert Data into Object >
           value[keyPair.trim()] = valuePair;
         } else {
-          throw new Error('Invalid input format for "Object" option.');
+          throw new Error('Invalid assignment format for "Object" option.');
         }
       });
 
@@ -576,7 +633,7 @@ function addButton() {
       let finalValue = stringifiedValue
         .replace(/,/g, ', ')
         .replace(/:/g, ' : ')
-        .replace(/"/g, '');
+        .replace(/"/g, ' ');
       objectUList.innerHTML += templateInject(keyNoDigit, finalValue);
 
       // Scroll Follow Pop Element >
@@ -585,7 +642,7 @@ function addButton() {
       // Invalid Object Syntax ERROR WINDOW >
     } catch (error) {
       popContainer.style.display = 'block';
-      titleErrorWindow.innerText = 'Syntax ERROR';
+      titleErrorWindow.innerText = 'Assignment ERROR';
       document.querySelector('section').style.filter = 'blur(3px)';
       // Buttons
       cancelMessage.style.display = 'none';
@@ -692,8 +749,8 @@ function removeItem() {
     // Invalid Select Data DELETE ERROR WINDOW >
   } else {
     popContainer.style.display = 'block';
-    titleErrorWindow.innerText = 'Data type Delete ERROR';
-    mainErrorMessage.innerText = 'Select data type to Delete.';
+    titleErrorWindow.innerText = 'Delete Last Item ERROR';
+    mainErrorMessage.innerText = 'Select Data Type first to Delete Last Item.';
     document.querySelector('section').style.filter = 'blur(3px)';
     // Buttons
     cancelMessage.style.display = 'none';
@@ -746,7 +803,7 @@ function popRemoveMessages() {
   } else {
     popContainer.style.display = 'block';
     titleErrorWindow.innerText = 'WARNING!';
-    mainErrorMessage.innerText = 'Are you sure you want to erase all data?';
+    mainErrorMessage.innerText = 'Do you want to remove all Items ?';
     document.querySelector('section').style.filter = 'blur(3px)';
     // Buttons
     cancelMessage.style.display = 'block';
@@ -778,19 +835,3 @@ function clearLocalStorage() {
 gitLinkButton.addEventListener('click', function () {
   window.open('https://github.com/Leyinko/Your-local-localStorage', '_blank');
 });
-
-// ******************************** ⬇ TESTING ZONE ⬇ ************************************* //
-
-// > Console Button Test >
-
-// const consoleButton = document.getElementById('console-test');
-
-// consoleButton.addEventListener('click', triggerConsole);
-
-// function triggerConsole() {
-//   console.log(`Array counter : ${counterArray}`);
-//   console.log(`Object counter : ${counterObject}`);
-//   console.log(globalKeys);
-//   console.log(`Item Array Reference :`, itemLength);
-// console.log(firstItemKey);
-// }

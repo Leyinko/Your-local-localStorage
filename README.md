@@ -19,7 +19,7 @@
 <ol>
 
 - The input should recognize Strings, Booleans, and Numbers, and based on the syntax used, it stores data into single key/value Items, Arrays, or Objects.
-- ! No symbols needed !<br>Some accents or certain symbols may not appear correctly due to font restrictions.
+- ! No symbols needed = NO quotes, brackets or braces !<br>Some accents or certain symbols may not appear correctly due to font restrictions.
 - Completely useless, but could help explore and learn a bit about the Local Storage API.
 - Personal design (Use of PS).
 - Tablet and mobile versions.
