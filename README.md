@@ -11,6 +11,8 @@
 <br>
 <br>
 <span style="font-weight:bold; font-size:14px">Your local Local Storage</span><br>
+<a href="https://your-local-localstorage.netlify.app/">https://your-local-localstorage.netlify.app/</a>
+<br>
 <br>
 <br>
 <p style="font-weight: bold">Overview ></p>
