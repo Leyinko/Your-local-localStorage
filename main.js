@@ -154,10 +154,6 @@ function emptyStorageMessage() {
   if (localStorage.length <= 0) {
     // Empty Message >
     emptyContentMessage.innerText = 'NO DATA FOUND.';
-    // Center Elements Container >
-    uiContainer.style.display = 'flex';
-    uiContainer.style.justifyContent = 'center';
-    uiContainer.style.alignItems = 'center';
     // Media Query Text Modified on reload >
     if (window.innerWidth <= 600) {
       emptyContentMessage.innerText = 'NO DATA.';
@@ -165,18 +161,19 @@ function emptyStorageMessage() {
     // Applied Style Properties through DOM and Object.assign >
     Object.assign(emptyContentMessage.style, {
       fontSize: '2.5rem',
+      margin: '0 auto',
       position: 'absolute',
       top: '50%',
       left: '50%',
       transform: 'translate(-50%,-50%)',
     });
-    //
+
     ulContainer.append(emptyContentMessage);
-    uiContainer.style.display = '';
 
     // Not empty >
   } else {
     emptyContentMessage.remove();
+    ulContainer.style.display = '';
   }
 }
 
@@ -192,12 +189,6 @@ function loadingBar() {
   itemUList.style.display = 'none';
   arrayUList.style.display = 'none';
   objectUList.style.display = 'none';
-
-  // Center Elements Container >
-  uiContainer.style.display = 'flex';
-  uiContainer.style.justifyContent = 'center';
-  uiContainer.style.alignItems = 'center';
-
   //
   let width = 0;
   const id = setInterval(frame, 200);
@@ -210,7 +201,6 @@ function loadingBar() {
       arrayUList.style.display = 'block';
       objectUList.style.display = 'block';
       //
-      uiContainer.style.display = '';
     } else {
       width += 10;
       element.style.width = width + '%';
