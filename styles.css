@@ -3,7 +3,7 @@
 * {
   box-sizing: border-box;
   padding: 0;
-  margin: 5px;
+  /* margin: 5px; */
   /* font-family: 'Techkr'; */
   user-select: none;
   text-decoration: none;
@@ -60,6 +60,7 @@ body {
   justify-content: center;
   align-items: center;
   background-image: url(./Assets/Pers-Design/Custom-Background-3.png);
+  background-color: rgb(255, 255, 255);
   object-fit: cover;
   background-size: cover;
   background-repeat: no-repeat;
@@ -136,6 +137,7 @@ main {
 /* Round containers */
 
 .principal-icon-container {
+  margin: 5px;
   width: 60px;
   height: 60px;
   padding: 14px;
@@ -237,7 +239,7 @@ input:focus::placeholder {
   position: relative;
   width: 100%;
   min-height: 100px;
-  padding: 50px 30px;
+  padding: 30px 30px;
   margin-bottom: 80px;
   display: flex;
   justify-content: center;
@@ -262,16 +264,19 @@ input:focus::placeholder {
 }
 
 #ul-lists ul li p {
+  margin: 5px;
   padding: 5px;
   line-height: 25px;
   font-family: 'ShareTech';
 }
 
 li {
+  height: max-content;
   margin: 15px 0px;
 }
 
 li > h4 {
+  margin: 5px;
   line-height: 30px;
   font-family: 'ShareTech';
   font-weight: 300;
@@ -318,7 +323,6 @@ p > span {
 /*> Loading Bar */
 
 #myProgress {
-  margin: 0 auto;
   position: absolute;
   display: flex;
   align-items: center;
@@ -340,7 +344,6 @@ p > span {
 
 #loading {
   margin: 0 auto;
-  vertical-align: middle;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -385,14 +388,12 @@ p > span {
 /* Text */
 
 .nav > p {
-  margin: 0px;
   color: white;
 }
 
 /* X */
 
 .nav > span {
-  margin: 0 auto;
   padding: 0px;
   width: 25px;
   height: 25px;
@@ -433,7 +434,7 @@ p > span {
 #cancel-pop-buttons,
 #erase-pop-buttons,
 #instruction-pop-buttons {
-  margin: 0px;
+  /* margin: 0px; */
   width: 120px;
   border: 1px solid black;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
@@ -469,8 +470,9 @@ p > span {
   opacity: 0;
   transition: opacity 0.6s linear;
   overflow: scroll;
-  background-image: url('./Assets/Pers-Design/Custom-Background-4.png');
-  background-position: bottom;
+  background-image: url('./Assets/Pers-Design/Custom-Background-Instru.png');
+  background-color: rgb(255, 255, 255);
+  background-size: cover;
   overflow-x: hidden;
 }
 

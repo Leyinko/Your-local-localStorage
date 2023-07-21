@@ -154,6 +154,7 @@ function emptyStorageMessage() {
   if (localStorage.length <= 0) {
     // Empty Message >
     emptyContentMessage.innerText = 'NO DATA FOUND.';
+    //
     // Media Query Text Modified on reload >
     if (window.innerWidth <= 600) {
       emptyContentMessage.innerText = 'NO DATA.';
