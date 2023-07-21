@@ -392,7 +392,7 @@ p > span {
 /* X */
 
 .nav > span {
-  margin: 0px;
+  margin: 0 auto;
   padding: 0px;
   width: 25px;
   height: 25px;
