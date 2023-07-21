@@ -245,6 +245,7 @@ function highlightOption() {
 }
 
 // > Instructions Box >
+// * Mix of display none and opacity = first open smooth and display none to not disturb the general scroll!
 
 const instructionsBox = document.getElementById('instructions-box');
 
@@ -253,7 +254,9 @@ howTo.addEventListener('click', openInstructionsBox);
 
 // Open >
 function openInstructionsBox() {
+  //
   instructionsBox.style.opacity = '1';
+  instructionsBox.style.display = '';
   //
   instructionsBox.style.transition = '';
   instructionsBox.style.zIndex = '9999';
@@ -264,11 +267,14 @@ function openInstructionsBox() {
   document.querySelector('body').style.overflow = 'hidden';
   // Take back general scroll to top >
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Scroll instruction back to top >
+  instructionsBox.scrollTop = '0';
 }
 
 // Close >
 function closeInstructionsBox() {
   instructionsBox.style.opacity = '0';
+  instructionsBox.style.display = 'none';
   //
   instructionsBox.style.transition = 'none';
   instructionsBox.style.zIndex = '';
@@ -277,8 +283,6 @@ function closeInstructionsBox() {
   document.querySelector('section').style.filter = '';
   //
   document.querySelector('body').style.overflow = '';
-  // Scroll instruction back to top >
-  instructionsBox.scrollTop = '0';
 }
 
 // NB : Keyboard Config >

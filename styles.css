@@ -141,7 +141,7 @@ main {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 2px solid black;
   cursor: pointer;
   background-color: white;
 }
@@ -154,7 +154,7 @@ main {
 }
 
 .principal-icon-container:hover {
-  border: 2px solid black;
+  border: 3px solid black;
   background-color: #00000011;
 }
 
