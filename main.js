@@ -51,7 +51,7 @@ const errorSound = document.getElementById('error-sound');
 function checkTypeOfValue(value) {
   let booleanReturn = false;
   //
-  if (/[0-9]/.test(value)) {
+  if (/[0-9]/.test(value) && !/[A-Za-z]/.test(value)) {
     value = parseInt(value);
   } else if (value === 'true') {
     return !booleanReturn;
