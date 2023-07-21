@@ -85,16 +85,26 @@ function rechargeUList() {
     if (element.includes('Array')) {
       let valueArray = JSON.stringify(value)
         .replace(/,/g, ', ')
-        .replace(/"/g, ' ');
-      arrayUList.innerHTML += templateInject(keyNoDigit, valueArray);
+        .replace(/"/g, '')
+        .replace(/\[/, ' [ ')
+        .replace(/\]/, ' ] ');
+      arrayUList.innerHTML += templateInject(
+        keyNoDigit.toUpperCase(),
+        valueArray
+      );
     } else if (element.includes('Object')) {
       let valueObject = JSON.stringify(value)
-        .replace(/"/g, ' ')
+        .replace(/"/g, '')
         .replace(/:/g, ' : ')
-        .replace(/,/g, ', ');
-      objectUList.innerHTML += templateInject(keyNoDigit, valueObject);
+        .replace(/,/g, ', ')
+        .replace(/{/, ' { ')
+        .replace(/}/, ' } ');
+      objectUList.innerHTML += templateInject(
+        keyNoDigit.toUpperCase(),
+        valueObject
+      );
     } else {
-      itemUList.innerHTML += templateInject(keyNoDigit, value);
+      itemUList.innerHTML += templateInject(keyNoDigit.toUpperCase(), value);
     }
   });
   // UI Message Console >
@@ -143,10 +153,10 @@ function playSound() {
 function emptyStorageMessage() {
   if (localStorage.length <= 0) {
     // Empty Message >
-    emptyContentMessage.innerText = 'Your local storage is empty.';
+    emptyContentMessage.innerText = 'NO DATA FOUND.';
     // Media Query Text Modified on reload >
     if (window.innerWidth <= 600) {
-      emptyContentMessage.innerText = 'Empty local storage.';
+      emptyContentMessage.innerText = 'NO DATA.';
     }
     // Applied Style Properties through DOM and Object.assign >
     Object.assign(emptyContentMessage.style, {
@@ -243,22 +253,32 @@ howTo.addEventListener('click', openInstructionsBox);
 
 // Open >
 function openInstructionsBox() {
-  instructionsBox.style.transition = '';
   instructionsBox.style.opacity = '1';
+  //
+  instructionsBox.style.transition = '';
   instructionsBox.style.zIndex = '9999';
   document.querySelector('body').style.backgroundColor = 'black';
   document.querySelector('body').style.backgroundImage = '';
   document.querySelector('section').style.filter = 'blur(10px)';
+  // No scroll behind even for tablet and mobiles >
+  document.querySelector('body').style.overflow = 'hidden';
+  // Take back general scroll to top >
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Close >
 function closeInstructionsBox() {
   instructionsBox.style.opacity = '0';
-  instructionsBox.style.zIndex = '';
+  //
   instructionsBox.style.transition = 'none';
+  instructionsBox.style.zIndex = '';
   document.querySelector('body').style.backgroundColor = '';
   document.querySelector('body').style.backgroundImage = '';
   document.querySelector('section').style.filter = '';
+  //
+  document.querySelector('body').style.overflow = '';
+  // Scroll instruction back to top >
+  instructionsBox.scrollTop = '0';
 }
 
 // NB : Keyboard Config >
@@ -509,7 +529,7 @@ function addButton() {
       window.localStorage.setItem(finalKey, JSON.stringify(value));
 
       // Insert Item to UI Item List>
-      itemUList.innerHTML += templateInject(keyNoDigit, value);
+      itemUList.innerHTML += templateInject(keyNoDigit.toUpperCase(), value);
 
       // Scroll Follow Pop Element >
       itemUList.lastElementChild.scrollIntoView();
@@ -565,8 +585,15 @@ function addButton() {
       // * Regular expressions are the best.. >
 
       let stringifiedValue = JSON.stringify(value);
-      let finalValue = stringifiedValue.replace(/,/g, ', ').replace(/"/g, ' ');
-      arrayUList.innerHTML += templateInject(keyNoDigit, finalValue);
+      let finalValue = stringifiedValue
+        .replace(/,/g, ', ')
+        .replace(/"/g, '')
+        .replace(/\[/, ' [ ')
+        .replace(/\]/, ' ] ');
+      arrayUList.innerHTML += templateInject(
+        keyNoDigit.toUpperCase(),
+        finalValue
+      );
 
       // Scroll Follow Pop Element >
       arrayUList.lastElementChild.scrollIntoView();
@@ -633,8 +660,13 @@ function addButton() {
       let finalValue = stringifiedValue
         .replace(/,/g, ', ')
         .replace(/:/g, ' : ')
-        .replace(/"/g, ' ');
-      objectUList.innerHTML += templateInject(keyNoDigit, finalValue);
+        .replace(/"/g, '')
+        .replace(/{/, ' { ')
+        .replace(/}/, ' } ');
+      objectUList.innerHTML += templateInject(
+        keyNoDigit.toUpperCase(),
+        finalValue
+      );
 
       // Scroll Follow Pop Element >
       objectUList.lastElementChild.scrollIntoView();
