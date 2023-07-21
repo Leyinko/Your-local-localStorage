@@ -468,28 +468,28 @@ function addButton() {
   }
 
   // Accents ERROR >
-  if (/[À-ÅÈ-ËÌ-ÏÒ-ÖÙ-Üà-åè-ëì-ïò-öù-ü]/.test(item)) {
-    popContainer.style.display = 'block';
-    //
-    titleErrorWindow.innerText = 'Syntax ERROR';
-    mainErrorMessage.innerText = 'Accent or symbol not supported!';
-    document.querySelector('section').style.filter = 'blur(3px)';
-    // Buttons
-    cancelMessage.style.display = 'none';
-    confirmMessage.style.display = 'block';
-    eraseAllMessage.style.display = 'none';
-    // Audio
-    playSound();
-    // Confirm by pressing Enter
-    confirmMessage.focus();
-    confirmMessage.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        closeWindowError();
-        input.focus();
-      }
-    });
-    return;
-  }
+  // if (/[À-ÅÈ-ËÌ-ÏÒ-ÖÙ-Üà-åè-ëì-ïò-öù-ü]/.test(item)) {
+  //   popContainer.style.display = 'block';
+  //   //
+  //   titleErrorWindow.innerText = 'Syntax ERROR';
+  //   mainErrorMessage.innerText = 'Accent or symbol not supported!';
+  //   document.querySelector('section').style.filter = 'blur(3px)';
+  //   // Buttons
+  //   cancelMessage.style.display = 'none';
+  //   confirmMessage.style.display = 'block';
+  //   eraseAllMessage.style.display = 'none';
+  //   // Audio
+  //   playSound();
+  //   // Confirm by pressing Enter
+  //   confirmMessage.focus();
+  //   confirmMessage.addEventListener('keydown', function (event) {
+  //     if (event.key === 'Enter') {
+  //       closeWindowError();
+  //       input.focus();
+  //     }
+  //   });
+  //   return;
+  // }
 
   // Quotation ERROR >
   if (item.includes('"')) {
