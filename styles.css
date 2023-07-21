@@ -60,6 +60,8 @@ body {
   justify-content: center;
   align-items: center;
   background-image: url(./Assets/Pers-Design/Custom-Background-3.png);
+  object-fit: cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -422,6 +424,9 @@ p > span {
 #cancel-pop-buttons,
 #erase-pop-buttons,
 #instruction-pop-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 30px;
   padding: 0px 15px;
   width: 120px;

@@ -154,6 +154,10 @@ function emptyStorageMessage() {
   if (localStorage.length <= 0) {
     // Empty Message >
     emptyContentMessage.innerText = 'NO DATA FOUND.';
+    // Center Elements Container >
+    uiContainer.style.display = 'flex';
+    uiContainer.style.justifyContent = 'center';
+    uiContainer.style.alignItems = 'center';
     // Media Query Text Modified on reload >
     if (window.innerWidth <= 600) {
       emptyContentMessage.innerText = 'NO DATA.';
@@ -168,6 +172,7 @@ function emptyStorageMessage() {
     });
     //
     ulContainer.append(emptyContentMessage);
+    uiContainer.style.display = '';
 
     // Not empty >
   } else {
@@ -188,8 +193,10 @@ function loadingBar() {
   arrayUList.style.display = 'none';
   objectUList.style.display = 'none';
 
-  // Thicker Container >
-  uiContainer.style.height = '100px';
+  // Center Elements Container >
+  uiContainer.style.display = 'flex';
+  uiContainer.style.justifyContent = 'center';
+  uiContainer.style.alignItems = 'center';
 
   //
   let width = 0;
@@ -203,7 +210,7 @@ function loadingBar() {
       arrayUList.style.display = 'block';
       objectUList.style.display = 'block';
       //
-      uiContainer.style.height = '';
+      uiContainer.style.display = '';
     } else {
       width += 10;
       element.style.width = width + '%';
@@ -466,30 +473,6 @@ function addButton() {
     });
     return;
   }
-
-  // Accents ERROR >
-  // if (/[À-ÅÈ-ËÌ-ÏÒ-ÖÙ-Üà-åè-ëì-ïò-öù-ü]/.test(item)) {
-  //   popContainer.style.display = 'block';
-  //   //
-  //   titleErrorWindow.innerText = 'Syntax ERROR';
-  //   mainErrorMessage.innerText = 'Accent or symbol not supported!';
-  //   document.querySelector('section').style.filter = 'blur(3px)';
-  //   // Buttons
-  //   cancelMessage.style.display = 'none';
-  //   confirmMessage.style.display = 'block';
-  //   eraseAllMessage.style.display = 'none';
-  //   // Audio
-  //   playSound();
-  //   // Confirm by pressing Enter
-  //   confirmMessage.focus();
-  //   confirmMessage.addEventListener('keydown', function (event) {
-  //     if (event.key === 'Enter') {
-  //       closeWindowError();
-  //       input.focus();
-  //     }
-  //   });
-  //   return;
-  // }
 
   // Quotation ERROR >
   if (item.includes('"')) {
